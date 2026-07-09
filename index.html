@@ -197,6 +197,31 @@
   @media (max-width: 560px){
     .footer-top{ align-items:flex-start; }
   }
+
+  /* ---------- Consent banner ---------- */
+  .consent{
+    position:fixed; left:50%; bottom:22px; transform:translate(-50%, 30px);
+    width:min(680px, calc(100vw - 32px)); z-index:200;
+    background:#0C0E0E; border:1px solid var(--line-on-black); border-radius:14px;
+    padding:22px 24px; box-shadow:0 24px 60px -18px rgba(0,0,0,.65);
+    opacity:0; pointer-events:none;
+    transition:opacity .45s ease, transform .45s ease;
+  }
+  .consent.show{ opacity:1; transform:translate(-50%, 0); pointer-events:auto; }
+  .consent h4{ font-size:15px; margin:0 0 8px 0; letter-spacing:0.01em; color:var(--white); }
+  .consent p{ font-size:13.5px; line-height:1.6; color:var(--muted-on-black); margin:0 0 16px 0; }
+  .consent p a{ color:var(--white); }
+  .consent-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+  .consent-btn{
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+    font-size:13px; letter-spacing:0.03em; cursor:pointer;
+    padding:11px 20px; border-radius:999px; transition:background .2s, color .2s, border-color .2s;
+  }
+  .consent-btn.accept{ background:var(--white); color:var(--black); border:1px solid var(--white); }
+  .consent-btn.accept:hover{ background:var(--stamp); border-color:var(--stamp); color:var(--white); }
+  .consent-btn.decline{ background:transparent; color:var(--white); border:1px solid var(--line-on-black); }
+  .consent-btn.decline:hover{ border-color:var(--white); }
+  @media (prefers-reduced-motion:reduce){ .consent{ transition:none; } }
 </style>
 </head>
 <body>
@@ -232,12 +257,94 @@
         smartCover GmbH · Wolfskuhle 24 · 45529 Hattingen<br>
         Geschäftsführer: Björn Müller · Handelsregister: Amtsgericht Essen, HRB 38106
       </div>
-      <div class="copyright">© <span id="year"></span> smartCover GmbH — Alle Rechte vorbehalten. · <a href="datenschutz.html">Datenschutzerklärung</a></div>
+      <div class="copyright">© <span id="year"></span> smartCover GmbH — Alle Rechte vorbehalten. · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutzerklärung</a> · <a href="#" id="cookieSettings">Cookie-Einstellungen</a></div>
     </div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
+<div class="consent" id="consentBanner" role="dialog" aria-modal="false" aria-label="Cookie-Einwilligung">
+  <h4>Cookies &amp; Statistik</h4>
+  <p>
+    Wir möchten Google Analytics verwenden, um die Nutzung unserer Website
+    anonymisiert auszuwerten. Dabei werden Cookies gesetzt und Daten an Google
+    (auch in die USA) übertragen – aber nur, wenn Sie zustimmen. Details finden
+    Sie in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.
+  </p>
+  <div class="consent-actions">
+    <button class="consent-btn accept" id="consentAccept">Akzeptieren</button>
+    <button class="consent-btn decline" id="consentDecline">Ablehnen</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var KEY = 'sc-consent';
+  var banner = document.getElementById('consentBanner');
+  var btnAccept = document.getElementById('consentAccept');
+  var btnDecline = document.getElementById('consentDecline');
+  var settingsLink = document.getElementById('cookieSettings');
+
+  function loadGA(){
+    if (window._scGaLoaded) return;
+    window._scGaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-DHHDK0SVP1';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-DHHDK0SVP1', { 'anonymize_ip': true });
+  }
+
+  function showBanner(){ banner.classList.add('show'); }
+  function hideBanner(){ banner.classList.remove('show'); }
+
+  function deleteGACookies(){
+    var host = location.hostname.replace(/^www\./, '');
+    document.cookie.split(';').forEach(function(c){
+      var name = c.split('=')[0].trim();
+      if (name.indexOf('_ga') === 0 || name === '_gid'){
+        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.' + host;
+      }
+    });
+  }
+
+  var choice = null;
+  try { choice = localStorage.getItem(KEY); } catch(e){}
+
+  if (choice === 'granted'){
+    loadGA();
+  } else if (choice !== 'denied'){
+    setTimeout(showBanner, 800);
+  }
+
+  btnAccept.addEventListener('click', function(){
+    try { localStorage.setItem(KEY, 'granted'); } catch(e){}
+    hideBanner();
+    loadGA();
+  });
+
+  btnDecline.addEventListener('click', function(){
+    try { localStorage.setItem(KEY, 'denied'); } catch(e){}
+    deleteGACookies();
+    hideBanner();
+  });
+
+  if (settingsLink){
+    settingsLink.addEventListener('click', function(ev){
+      ev.preventDefault();
+      try { localStorage.removeItem(KEY); } catch(e){}
+      deleteGACookies();
+      window._scGaLoaded = false;
+      showBanner();
+    });
+  }
+})();
+</script>
 </body>
 </html>
