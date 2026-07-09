@@ -9,14 +9,14 @@
   :root{
     --black:#010101;
     --white:#FEFEFE;
-    --muted:#5C6360;
-    --line: rgba(1,1,1,0.12);
+    --muted:#9AA0A0;
+    --line: rgba(254,254,254,0.16);
   }
   *{ box-sizing:border-box; }
   html,body{
     margin:0; padding:0;
-    background: var(--white);
-    color: var(--black);
+    background: var(--black);
+    color: var(--white);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
@@ -25,7 +25,7 @@
     margin: 0 auto;
     padding: 56px 24px 80px 24px;
   }
-  a{ color: var(--black); }
+  a{ color: var(--white); }
   .back{
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
     font-size: 13px;
@@ -52,11 +52,11 @@
   p, li{
     font-size: 15.5px;
     line-height: 1.7;
-    color: #222;
+    color: #D6D9D8;
   }
   ul{ padding-left: 20px; margin: 10px 0; }
   .card{
-    background: #F5F5F4;
+    background: #0E1010;
     border: 1px solid var(--line);
     border-radius: 4px;
     padding: 18px 20px;
@@ -90,11 +90,12 @@
     <h2>2. Allgemeines zur Datenverarbeitung</h2>
     <p>
       Diese Website befindet sich derzeit im Aufbau und dient ausschließlich der
-      Ankündigung unseres bevorstehenden Angebots. Sie enthält keine Formulare,
-      keine Cookies und keine Analyse- oder Trackingdienste. Es werden keine
-      Schriftarten oder sonstigen Inhalte von externen Servern nachgeladen –
-      alle Inhalte dieser Seite werden ausschließlich von unserem eigenen
-      Hosting-Anbieter ausgeliefert.
+      Ankündigung unseres bevorstehenden Angebots. Sie enthält keine Formulare
+      und keine Nutzerkonten. Cookies und ein Statistik-Dienst (Google
+      Analytics) kommen ausschließlich dann zum Einsatz, wenn Sie zuvor über
+      unser Einwilligungs-Banner ausdrücklich zugestimmt haben (siehe Ziffern
+      5 und 6). Für die reine Darstellung der Seite werden keine Schriftarten
+      oder sonstigen Inhalte von Drittanbietern nachgeladen.
     </p>
 
     <h2>3. Server-Logfiles</h2>
@@ -111,17 +112,20 @@
       <li>verweisende URL (Referrer)</li>
     </ul>
     <p>
-      Diese Daten dienen der technischen Bereitstellung der Website, der
-      Gewährleistung der Systemsicherheit sowie einer anonymisierten,
-      zusammengefassten Besucherstatistik (bereitgestellt über die
-      Statistik-Funktion unseres Hosting-Anbieters STRATO). Es werden dabei
-      keine Cookies gesetzt und keine individuellen Nutzungsprofile erstellt;
-      die IP-Adressen werden für die Statistikauswertung automatisch
-      anonymisiert. Die Daten werden nicht mit anderen Datenquellen
-      zusammengeführt. Rechtsgrundlage ist unser berechtigtes Interesse an
-      einem sicheren und funktionsfähigen Betrieb unserer Website sowie an der
-      Optimierung unseres Webangebots (Art. 6 Abs. 1 lit. f DSGVO). Die
-      Speicherdauer richtet sich nach den Vorgaben unseres Hosting-Anbieters.
+      Diese Website wird über den Dienst GitHub Pages der GitHub, Inc.
+      (88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA;
+      Vertragspartner für Nutzer im EWR: GitHub B.V., Prins Bernhardplein 200,
+      1097 JB Amsterdam, Niederlande) gehostet; zur Auslieferung wird das
+      Content-Delivery-Netzwerk von Fastly, Inc. (USA) genutzt. Die genannten
+      Logdaten dienen der technischen Bereitstellung der Website und der
+      Gewährleistung der Systemsicherheit; es werden dabei keine individuellen
+      Nutzungsprofile durch uns erstellt. Rechtsgrundlage ist unser
+      berechtigtes Interesse an einem sicheren und funktionsfähigen Betrieb
+      unserer Website (Art. 6 Abs. 1 lit. f DSGVO). Soweit dabei Daten auf
+      Servern in den USA verarbeitet werden, erfolgt dies auf Grundlage der
+      EU-Standardvertragsklauseln; GitHub, Inc. ist zudem unter dem EU-US
+      Data Privacy Framework zertifiziert. Die Speicherdauer der Logfiles
+      richtet sich nach den Vorgaben des Hosting-Anbieters.
     </p>
 
     <h2>4. Kontaktaufnahme per E-Mail</h2>
@@ -135,13 +139,59 @@
       sobald sie für die Bearbeitung nicht mehr erforderlich sind.
     </p>
 
-    <h2>5. Keine Weitergabe an Dritte</h2>
+    <h2>5. Cookies und Einwilligungsverwaltung</h2>
     <p>
-      Eine Übermittlung Ihrer Daten an Dritte oder in Länder außerhalb der
-      EU/des EWR findet über den Betrieb dieser Website nicht statt.
+      Cookies und vergleichbare Technologien setzen wir ausschließlich für den
+      unter Ziffer 6 beschriebenen Statistik-Dienst Google Analytics ein – und
+      nur dann, wenn Sie zuvor über unser Einwilligungs-Banner ausdrücklich
+      zugestimmt haben (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG). Ohne
+      Ihre Einwilligung wird der Dienst nicht geladen und es werden keine
+      Statistik-Cookies gesetzt.
+    </p>
+    <p>
+      Ihre Auswahl (Zustimmung oder Ablehnung) speichern wir im lokalen
+      Speicher Ihres Browsers (localStorage), damit das Banner nicht bei jedem
+      Seitenaufruf erneut erscheint (§ 25 Abs. 2 Nr. 2 TDDDG). Sie können Ihre
+      Entscheidung jederzeit über den Link „Cookie-Einstellungen" im Seitenfuß
+      ändern oder widerrufen.
     </p>
 
-    <h2>6. Ihre Rechte</h2>
+    <h2>6. Google Analytics</h2>
+    <p>
+      Sofern Sie eingewilligt haben, nutzt diese Website Google Analytics 4,
+      einen Webanalysedienst der Google Ireland Limited („Google"), Gordon
+      House, Barrow Street, Dublin 4, Irland. Google Analytics ermöglicht uns
+      eine statistische Auswertung der Websitenutzung (z. B. aufgerufene
+      Seiten, Verweildauer, verwendetes Endgerät, ungefähre Herkunftsregion)
+      und setzt hierzu Cookies bzw. vergleichbare Technologien ein. In Google
+      Analytics 4 werden IP-Adressen standardmäßig nicht gespeichert, sondern
+      nur zur groben Standortbestimmung verwendet und anschließend gelöscht.
+    </p>
+    <p>
+      Rechtsgrundlage ist ausschließlich Ihre Einwilligung
+      (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG); Sie können diese
+      jederzeit mit Wirkung für die Zukunft über den Link
+      „Cookie-Einstellungen" im Seitenfuß widerrufen. Im Rahmen der Nutzung
+      können Daten an Server der Google LLC in den USA übertragen werden;
+      Google LLC ist unter dem EU-US Data Privacy Framework zertifiziert,
+      ergänzend gelten EU-Standardvertragsklauseln. Wir haben mit Google einen
+      Vertrag zur Auftragsverarbeitung (Art. 28 DSGVO) geschlossen. Die auf
+      Nutzer- und Ereignisebene gespeicherten Daten werden spätestens nach
+      14 Monaten gelöscht. Weitere Informationen:
+      <a href="https://policies.google.com/privacy?hl=de" rel="noopener noreferrer" target="_blank">policies.google.com/privacy</a>;
+      Browser-Add-on zur Deaktivierung:
+      <a href="https://tools.google.com/dlpage/gaoptout?hl=de" rel="noopener noreferrer" target="_blank">tools.google.com/dlpage/gaoptout</a>.
+    </p>
+
+    <h2>7. Weitergabe von Daten</h2>
+    <p>
+      Eine Übermittlung Ihrer Daten an Dritte findet – abgesehen von der in
+      den Ziffern 3 und 6 beschriebenen technischen Verarbeitung durch unseren
+      Hosting-Anbieter bzw. der einwilligungsbasierten Nutzung von Google
+      Analytics – über den Betrieb dieser Website nicht statt.
+    </p>
+
+    <h2>8. Ihre Rechte</h2>
     <p>Ihnen stehen bezüglich Ihrer personenbezogenen Daten folgende Rechte zu:</p>
     <ul>
       <li>Auskunft (Art. 15 DSGVO)</li>
@@ -155,7 +205,7 @@
       Wenden Sie sich dazu gerne an die oben genannte Kontaktadresse.
     </p>
 
-    <h2>7. Beschwerderecht bei der Aufsichtsbehörde</h2>
+    <h2>9. Beschwerderecht bei der Aufsichtsbehörde</h2>
     <p>
       Sie haben zudem das Recht, sich bei einer Datenschutzaufsichtsbehörde
       über die Verarbeitung Ihrer personenbezogenen Daten zu beschweren.
@@ -172,7 +222,7 @@
 
     <footer>
       Diese Datenschutzerklärung wird angepasst, sobald weitere Funktionen
-      (z. B. Kontaktformular, Newsletter oder Webanalyse) hinzukommen.
+      (z. B. Kontaktformular oder Newsletter) hinzukommen.
     </footer>
   </div>
 </body>
